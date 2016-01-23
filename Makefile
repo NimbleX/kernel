@@ -1,6 +1,6 @@
 VERSION = 4
 PATCHLEVEL = 3
-SUBLEVEL = 3
+SUBLEVEL = 4
 EXTRAVERSION = -zen
 NAME = Trapped in a Satis Factory
 
