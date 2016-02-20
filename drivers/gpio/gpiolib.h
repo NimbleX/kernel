@@ -44,6 +44,8 @@ struct gpio_desc *acpi_get_gpiod_by_index(struct acpi_device *adev,
 					  struct acpi_gpio_info *info);
 
 int acpi_gpio_count(struct device *dev, const char *con_id);
+
+bool acpi_can_fallback_to_crs(struct acpi_device *adev, const char *con_id);
 #else
 static inline void acpi_gpiochip_add(struct gpio_chip *chip) { }
 static inline void acpi_gpiochip_remove(struct gpio_chip *chip) { }
@@ -64,6 +66,12 @@ acpi_get_gpiod_by_index(struct acpi_device *adev, const char *propname,
 static inline int acpi_gpio_count(struct device *dev, const char *con_id)
 {
 	return -ENODEV;
+}
+
+static inline bool acpi_can_fallback_to_crs(struct acpi_device *adev,
+					    const char *con_id)
+{
+	return false;
 }
 #endif
 
